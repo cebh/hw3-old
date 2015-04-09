@@ -1,0 +1,14 @@
+public Picture crop(int leftX, int topY, int regionWidth, int regionHeight)
+{
+	Picture croppedPicture = new Picture(regionWidth - leftX, regionHeight - topY);
+	int x, y;
+		int regionPixelCount = regionWidth*regionHeight;
+		for(int i = 0; i < regionPixelCount; i++)
+	{
+			x = i % regionWidth + leftX;
+			y = i / regionWidth + topY;
+			Pixel aDot = new Pixel(x,y);
+		}
+
+		return croppedPicture;
+	}
