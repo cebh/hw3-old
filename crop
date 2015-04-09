@@ -1,14 +1,19 @@
 public Picture crop(int leftX, int topY, int regionWidth, int regionHeight)
 {
-	Picture croppedPicture = new Picture(regionWidth - leftX, regionHeight - topY);
-	int x, y;
-		int regionPixelCount = regionWidth*regionHeight;
-		for(int i = 0; i < regionPixelCount; i++)
-	{
-			x = i % regionWidth + leftX;
-			y = i / regionWidth + topY;
-			Pixel aDot = new Pixel(x,y);
-		}
+	  Picture croppedPicture = new Picture(regionWidth, regionHeight);
+	  int x1, y1, x2, y2;
+	  int regionPixelCount = regionWidth*regionHeight;
+	  for(int i = 0; i < regionPixelCount; i++)
+	  {
+		  x1 = i % regionWidth + leftX;
+		  y1 = i / regionWidth + topY;
+		  x2 = i % regionWidth;
+		  y2 = i / regionWidth;
+		  Pixel aDot = new Pixel(this,x1,y1);
+		  Color col = aDot.getColor();
+		  Pixel newDot = new Pixel(croppedPicture, x2, y2);
+		  newDot.setColor(col);
+	  }
 
-		return croppedPicture;
-	}
+	  return croppedPicture;
+}
