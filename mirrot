@@ -1,0 +1,14 @@
+public void mirror()
+{
+	  int x, y;
+	  int regionWidth = this.getWidth();
+	  int regionHeight = this.getHeight();
+	  int pixelCount = regionWidth/2*regionHeight;
+	  for(int i = 0; i < pixelCount; i++) {
+		  x = i % regionWidth/2;
+		  y = i / regionWidth;
+		  Pixel aDot = new Pixel(this, x, y);
+		  Pixel mirroredDot = new Pixel(this, regionWidth - x - 1, y);
+		  mirroredDot.setColor(aDot.getColor());
+	  }
+}
