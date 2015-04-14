@@ -1,5 +1,5 @@
 public Picture crop(int leftX, int topY, int regionWidth, int regionHeight)
-  {
+{
 	  Picture croppedPicture = new Picture(regionWidth, regionHeight);
 	  int x1, y1, x2, y2;
 	  int regionPixelCount = regionWidth*regionHeight;
@@ -19,4 +19,4 @@ public Picture crop(int leftX, int topY, int regionWidth, int regionHeight)
 	  }
 
 	  return croppedPicture;
-  }
+}
