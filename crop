@@ -1,22 +1,25 @@
 public Picture crop(int leftX, int topY, int regionWidth, int regionHeight)
 {
-	  Picture croppedPicture = new Picture(regionWidth, regionHeight);
-	  int x1, y1, x2, y2;
-	  int regionPixelCount = regionWidth*regionHeight;
-	  for(int i = 0; i < regionPixelCount; i++)
-	  {
-		  x1 = i % regionWidth + leftX;
-		  y1 = i / regionWidth + topY;
-		  x2 = i % regionWidth;
-		  y2 = i / regionWidth;
-		  Pixel newDot = new Pixel(croppedPicture, x2, y2);
-		  if(x1 >= 0 && x1 < this.getWidth() & y1 >= 0 && y1 < this.getHeight()) {
-			  Pixel aDot = new Pixel(this,x1,y1);
-			  Color col = aDot.getColor();
-			  newDot.setColor(col);
-		  }
+	int x1, y1, x2, y2;
+	if(leftX + regionWidth > this.getWidth()) {
+		regionWidth = this.getWidth() - leftX;
+	}
+	if(topY + regionHeight > this.getHeight()) {
+		regionHeight = this.getHeight() - topY;
+	}
+	Picture croppedPicture = new Picture(regionWidth, regionHeight);
+	int regionPixelCount = regionWidth*regionHeight;
+	for(int i = 0; i < regionPixelCount; i++)
+	{
+		x1 = i % regionWidth + leftX;
+		y1 = i / regionWidth + topY;
+		x2 = i % regionWidth;
+		y2 = i / regionWidth;
+		Pixel newDot = new Pixel(croppedPicture, x2, y2);
+		Pixel aDot = new Pixel(this,x1,y1);
+		Color col = aDot.getColor();
+		newDot.setColor(col);
 
-	  }
-
-	  return croppedPicture;
+	}
+	return croppedPicture;
 }
