@@ -1,14 +1,21 @@
-public void mirror()
-{
-	  int x, y;
-	  int regionWidth = this.getWidth();
-	  int regionHeight = this.getHeight();
-	  int pixelCount = regionWidth/2*regionHeight;
-	  for(int i = 0; i < pixelCount; i++) {
-		  x = i % regionWidth/2;
-		  y = i / regionWidth;
-		  Pixel aDot = new Pixel(this, x, y);
-		  Pixel mirroredDot = new Pixel(this, regionWidth - x - 1, y);
-		  mirroredDot.setColor(aDot.getColor());
+public void mirror(int leftX, int topY, int regionWidth, int regionHeight)
+  {
+
+	  if(leftX + regionWidth > this.getWidth()) {
+		  regionWidth = this.getWidth() - leftX;
 	  }
-}
+	  if(topY + regionHeight > this.getHeight()) {
+		  regionHeight = this.getHeight() - topY;
+	  }
+  	  int x, y;
+  	  int pixelCount = regionWidth*regionHeight/2;
+  	  for(int i = 0; i < pixelCount; i++) {
+    	  x = i / regionWidth + leftX;
+    	  y = i % regionWidth + topY;
+  		  Pixel aDot = new Pixel(this, x, y);
+  		  Pixel mirroredDot = new Pixel(this, (leftX + regionWidth) - (x - leftX) - 1, y);
+  		  mirroredDot.setColor(aDot.getColor());
+  		  aDot.setColor(Color.BLUE);
+  		  if(i%1 ==0)this.repaint();
+  	  }
+  }
