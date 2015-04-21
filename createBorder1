@@ -1,0 +1,6 @@
+public void createBorder1(int squareLength, int rectancleLength, int rectangleHeight, int lineLength, int lineDistance) {
+	  Picture pic = this.getPicture();
+	  int[] corners = new int[1];
+	  this.moveTo(0, 0);
+	  
+}
