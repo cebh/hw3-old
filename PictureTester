@@ -1,10 +1,12 @@
 package hw3;
 import mediacomputation.Picture;
+import mediacomputation.Pixel;
 public class PictureTester {
 	private static final String PICTURE_FILE = "C:/Users/013316314/workspace/cecs174/src/hw3/flower.jpg";
 	public static void main(String[]args)
 	{
 		Picture flower = new Picture(PICTURE_FILE);
-		flower.crop(100, 100, 1000 ,1000).explore();
+		flower.horizontalMirror(100, 100, 60, 60);
+		flower.explore();
 	}
 }
